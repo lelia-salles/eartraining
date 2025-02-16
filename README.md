@@ -16,8 +16,8 @@ Redes sociais: O usuário pode adicionar e editar suas redes sociais dentro do p
 [Acessar >>](https://www.figma.com/design/nWdoJYqm70ZisZ8qdeG17V/EarTrainer?node-id=0-1&t=5aYB5z8hnFgClNc2-1)
 
 ## UML
-```plantuml
 
+``` mermaid
 classDiagram
     class EarTrainer {
         - User user
@@ -28,7 +28,7 @@ classDiagram
         + selectActivity(Activity activity)
         + startSession()
         + generateIntervalOrChord(Level level)  // Geração dinâmica de intervalos e acordes
-        + provideFeedback(String userAnswer)  // Feedback baseado na IA
+        + provideFeedback(userAnswer)  // Feedback baseado na IA
     }
 
     class User {
@@ -94,6 +94,4 @@ classDiagram
     Level --> Question
     Level --> Model  // Ajuste de nível com base nas recomendações do modelo
     Question --> Model  // Validação da resposta com IA
-
 ```
-
