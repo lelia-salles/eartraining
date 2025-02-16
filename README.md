@@ -5,7 +5,7 @@ Ele oferece atividades interativas onde os usuários podem ouvir sons e identifi
 Desenvolvido para o projeto final do curso de GFT Desenvolvendo em Java com IA da DIO
 
 ## Principais funcionalidades:
-- **Seleção de nível: O usuário pode escolher entre níveis iniciante, intermediário e avançado para cada atividade.
+- **Seleção de nível**: O usuário pode escolher entre níveis iniciante, intermediário e avançado para cada atividade.
 - **Treinamento auditivo:** Atividades para reconhecer acordes e intervalos musicais por meio da audição.
 - **Validação de respostas:** O usuário recebe feedback se sua resposta está correta ou errada.
 - Autenticação e perfil:** Login via email/senha ou Google OAuth, com um perfil personalizável.
