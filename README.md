@@ -23,12 +23,12 @@ classDiagram
         - User user
         - Activity activity
         - Level level
-        - Model model  // IA (TensorFlow) para classificação e geração dinâmica
+        - Model model  
         + selectLevel(Level level)
         + selectActivity(Activity activity)
         + startSession()
-        + generateIntervalOrChord(Level level)  // Geração dinâmica de intervalos e acordes
-        + provideFeedback(userAnswer)  // Feedback baseado na IA
+        + generateIntervalOrChord(Level level)  
+        + provideFeedback(userAnswer)  
     }
 
     class User {
@@ -36,10 +36,10 @@ classDiagram
         - String email
         - String profileImage
         - List<SocialLink> socialLinks
-        - int score  // Pontuação para medir o progresso do usuário
+        - int score  
         + editProfile(String name, String email, String profileImage)
         + addSocialLink(SocialLink link)
-        + updateScore(int points)  // Atualiza a pontuação do usuário
+        + updateScore(int points)  
     }
 
     class SocialLink {
@@ -48,16 +48,16 @@ classDiagram
     }
 
     class Activity {
-        - String type // e.g., Chords, Intervals
+        - String type 
         - List<Level> levels
         + start()
     }
 
     class Level {
-        - String difficulty // Beginner, Intermediate, Advanced
+        - String difficulty 
         - List<Question> questions
         + loadQuestions()
-        + adjustDifficulty(int score)  // Ajuste de dificuldade com base no progresso
+        + adjustDifficulty(int score)  
     }
 
     class Question {
@@ -79,19 +79,19 @@ classDiagram
     }
 
     class Model {
-        - String modelPath // Caminho do modelo treinado (TensorFlow)
-        + loadModel()  // Carrega o modelo treinado de IA
-        + generateIntervalOrChord(Level level)  // Gera intervalos e acordes com IA
-        + evaluateAnswer(String userAnswer, String correctAnswer)  // Avalia a resposta do usuário
+        - String modelPath 
+        + loadModel()  
+        + generateIntervalOrChord(Level level)  
+        + evaluateAnswer(String userAnswer, String correctAnswer)  
     }
 
     EarTrainer --> User
     EarTrainer --> Activity
     EarTrainer --> Level
-    EarTrainer --> Model  // Integração com IA (TensorFlow)
+    EarTrainer --> Model  
     User --> SocialLink
     Activity --> Level
     Level --> Question
-    Level --> Model  // Ajuste de nível com base nas recomendações do modelo
-    Question --> Model  // Validação da resposta com IA
+    Level --> Model  
+    Question --> Model  
 ```
