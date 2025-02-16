@@ -1,5 +1,5 @@
 # EarTrainer
-O **EarTrainer** é uma API RESTful em Java 21, usando Gradle e Railway, para treinar a percepção musical de intervalos e acordes com atividades interativas e níveis progressivos.
+O **EarTrainer** é uma API RESTful em Java 21, usando Spring, Gradle e Railway, para treinar a percepção musical de intervalos e acordes com atividades interativas e níveis progressivos.
 Ele oferece atividades interativas onde os usuários podem ouvir sons e identificar notas, intervalos ou acordes corretamente. O objetivo é aprimorar o ouvido musical de forma progressiva, com diferentes níveis de dificuldade.
 
 Desenvolvido para o projeto final do curso de GFT Desenvolvendo em Java com IA da DIO
