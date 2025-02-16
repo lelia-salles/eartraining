@@ -1,0 +1,13 @@
+package com.musictheory.eartrainer;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class EartrainerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(EartrainerApplication.class, args);
+	}
+
+}
