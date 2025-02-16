@@ -16,18 +16,17 @@ Redes sociais: O usuário pode adicionar e editar suas redes sociais dentro do p
 [Acessar >>](https://www.figma.com/design/nWdoJYqm70ZisZ8qdeG17V/EarTrainer?node-id=0-1&t=5aYB5z8hnFgClNc2-1)
 
 ## UML
-```mermaid
-classDiagram
+```classDiagram
     class EarTrainer {
         - User user
         - Activity activity
         - Level level
-        - Model model  
+        - Model model  // IA (TensorFlow) para classificação e geração dinâmica
         + selectLevel(Level level)
         + selectActivity(Activity activity)
         + startSession()
-        + generateIntervalOrChord(Level level)  
-        + provideFeedback(String userAnswer)  
+        + generateIntervalOrChord(Level level)  // Geração dinâmica de intervalos e acordes
+        + provideFeedback(String userAnswer)  // Feedback baseado na IA
     }
 
     class User {
@@ -35,10 +34,10 @@ classDiagram
         - String email
         - String profileImage
         - List<SocialLink> socialLinks
-        - int score  
+        - int score  // Pontuação para medir o progresso do usuário
         + editProfile(String name, String email, String profileImage)
         + addSocialLink(SocialLink link)
-        + updateScore(int points)  
+        + updateScore(int points)  // Atualiza a pontuação do usuário
     }
 
     class SocialLink {
@@ -47,16 +46,16 @@ classDiagram
     }
 
     class Activity {
-        - String type 
+        - String type // e.g., Chords, Intervals
         - List<Level> levels
         + start()
     }
 
     class Level {
-        - String difficulty 
+        - String difficulty // Beginner, Intermediate, Advanced
         - List<Question> questions
         + loadQuestions()
-        + adjustDifficulty(int score)  
+        + adjustDifficulty(int score)  // Ajuste de dificuldade com base no progresso
     }
 
     class Question {
@@ -78,7 +77,21 @@ classDiagram
     }
 
     class Model {
-        - String modelPath 
-        + loadModel()
+        - String modelPath // Caminho do modelo treinado (TensorFlow)
+        + loadModel()  // Carrega o modelo treinado de IA
+        + generateIntervalOrChord(Level level)  // Gera intervalos e acordes com IA
+        + evaluateAnswer(String userAnswer, String correctAnswer)  // Avalia a resposta do usuário
+    }
+
+    EarTrainer --> User
+    EarTrainer --> Activity
+    EarTrainer --> Level
+    EarTrainer --> Model  // Integração com IA (TensorFlow)
+    User --> SocialLink
+    Activity --> Level
+    Level --> Question
+    Level --> Model  // Ajuste de nível com base nas recomendações do modelo
+    Question --> Model  // Validação da resposta com IA
+
 ```
 
