@@ -22,9 +22,12 @@ classDiagram
         - User user
         - Activity activity
         - Level level
+        - Model model  // IA (TensorFlow) para classificação e geração dinâmica
         + selectLevel(Level level)
         + selectActivity(Activity activity)
         + startSession()
+        + generateIntervalOrChord(Level level)  // Geração dinâmica de intervalos e acordes
+        + provideFeedback(String userAnswer)  // Feedback baseado na IA
     }
 
     class User {
@@ -32,8 +35,10 @@ classDiagram
         - String email
         - String profileImage
         - List<SocialLink> socialLinks
+        - int score  // Pontuação para medir o progresso do usuário
         + editProfile(String name, String email, String profileImage)
         + addSocialLink(SocialLink link)
+        + updateScore(int points)  // Atualiza a pontuação do usuário
     }
 
     class SocialLink {
@@ -51,11 +56,13 @@ classDiagram
         - String difficulty // Beginner, Intermediate, Advanced
         - List<Question> questions
         + loadQuestions()
+        + adjustDifficulty(int score)  // Ajuste de dificuldade com base no progresso
     }
 
     class Question {
         - String soundClip
         - String correctAnswer
+        - String userAnswer
         + validateAnswer(String userAnswer)
     }
 
@@ -70,11 +77,9 @@ classDiagram
         + unsubscribe()
     }
 
-    EarTrainer --> User
-    EarTrainer --> Activity
-    EarTrainer --> Level
-    User --> SocialLink
-    Activity --> Level
-    Level --> Question
+    class Model {
+        - String modelPath // Caminho do modelo treinado (TensorFlow)
+        + loadModel()  /
+
 ```
 
