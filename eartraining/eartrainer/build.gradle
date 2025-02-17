@@ -45,6 +45,7 @@ dependencies {
 	implementation 'org.flywaydb:flyway-core'
 	implementation 'org.flywaydb:flyway-database-postgresql'
 	implementation 'org.flywaydb:flyway-mysql'
+	implementation 'jakarta.persistence:jakarta.persistence-api'
 	implementation 'org.liquibase:liquibase-core'
 	implementation 'org.springframework.cloud:spring-cloud-config-server'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
