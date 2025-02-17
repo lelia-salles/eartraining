@@ -1,21 +1,49 @@
-# EarTrainer
-O **EarTrainer** é uma API RESTful em Java 21, usando Spring, Gradle e Railway, para treinar a percepção musical de intervalos e acordes com atividades interativas e níveis progressivos.
-Ele oferece atividades interativas onde os usuários podem ouvir sons e identificar notas, intervalos ou acordes corretamente. O objetivo é aprimorar o ouvido musical de forma progressiva, com diferentes níveis de dificuldade.
+# EarTrainer 🎵
+O **EarTrainer** é uma API RESTful para treinar a percepção musical de intervalos e acordes com atividades interativas e níveis progressivos usando IA e Machine Learning para adaptar e garantir um aprendizado progressivo e personalizado.
 
-Desenvolvido para o projeto final do curso de GFT Desenvolvendo em Java com IA da DIO
+`Desenvolvido para o projeto final do curso de GFT Desenvolvendo em Java com IA da DIO`
 
 ## Principais funcionalidades:
 - **Seleção de nível**: O usuário pode escolher entre níveis iniciante, intermediário e avançado para cada atividade.
 - **Treinamento auditivo:** Atividades para reconhecer acordes e intervalos musicais por meio da audição.
-- **Validação de respostas:** O usuário recebe feedback se sua resposta está correta ou errada.
-- Autenticação e perfil:** Login via email/senha ou Google OAuth, com um perfil personalizável.
-Redes sociais: O usuário pode adicionar e editar suas redes sociais dentro do perfil.
+- **Autenticação e perfil:** Login via email/senha ou Google OAuth, com um perfil personalizável.
+- **Perfil do Usuário: O usuário pode adicionar e editar suas informações e suas redes sociais para compartilhar seu progresso.
+- **Processamento e Geração de Áudio:** Sons gerados dinamicamente e as respostas do usuário são validadas automáticamente após 5 tentativas.
+- **Arquitetura escalável e banco de dados otimizado para testes e produção, e com comunicação em tempo real
 
-## UX/UI (Figma)
+
+
+### Principais Tecnologias Usadas
+
+#### Backend
+
+-Java 21
+-Spring Boot 3.x
+-Spring Security & OAuth2
+-Spring WebSockets
+-Spring Data JPA (PostgreSQL ou H2)
+-TarsosDSP (Processamento de áudio)
+-Java Sound API (Geração de som)
+-TensorFlow Java (IA e Machine Learning)
+-Gradle (Gerenciamento de dependências)
+
+#### Infraestrutura e otimização
+
+- **Railway:** Inicialmente a configuração está feita para deploy no Railway, porém será configurado, posteriormente, o suporte para Docker e AWS.
+
+
+#### Frontend
+
+-Thymeleaf (Templates para teste no backend)
+
+
+#### UX/UI 
+
+-Figma (para posterior aprimoramento do Frontend)
 
 [Acessar >>](https://www.figma.com/design/nWdoJYqm70ZisZ8qdeG17V/EarTrainer?node-id=0-1&t=5aYB5z8hnFgClNc2-1)
 
-## UML
+### UML
 
 ``` mermaidclassDiagram
     class EarTrainer {
@@ -42,13 +70,13 @@ Redes sociais: O usuário pode adicionar e editar suas redes sociais dentro do p
     }
 
     class Activity {
-        - String type // e.g., Chords, Intervals
+        - String type 
         - List<Level> levels
         + start()
     }
 
     class Level {
-        - String difficulty // Beginner, Intermediate, Advanced
+        - String difficulty 
         - List<Question> questions
         + loadQuestions()
     }
