@@ -3,7 +3,8 @@ O **EarTrainer** é uma API RESTful para treinar a percepção musical de interv
 
 `Desenvolvido para o projeto final do curso de GFT Desenvolvendo em Java com IA da DIO`
 
-## Principais funcionalidades:
+## Principais funcionalidades 🔆
+---
 - **Seleção de nível**: O usuário pode escolher entre níveis iniciante, intermediário e avançado para cada atividade.
 - **Treinamento auditivo:** Atividades para reconhecer acordes e intervalos musicais por meio da audição.
 - **Autenticação e perfil:** Login via email/senha ou Google OAuth, com um perfil personalizável.
@@ -13,10 +14,10 @@ O **EarTrainer** é uma API RESTful para treinar a percepção musical de interv
 
 
 
-### Principais Tecnologias Usadas
+## Principais Tecnologias Usadas \U0001F4BE
 ---
 
-#### Backend
+### Backend
 
 - Java 21
 - Spring Boot 3.x
@@ -28,23 +29,23 @@ O **EarTrainer** é uma API RESTful para treinar a percepção musical de interv
 - TensorFlow Java (IA e Machine Learning)
 - Gradle (Gerenciamento de dependências)
 
-#### Infraestrutura e otimização
+### Infraestrutura e otimização
 
 - **Railway:** Inicialmente a configuração está feita para deploy no Railway, porém será configurado, posteriormente, o suporte para Docker e AWS.
 
 
-#### Frontend
+### Frontend
 
 - Thymeleaf (Templates para teste no backend)
 
 
-#### UX/UI 
+### UX/UI 
 
 - Figma (para posterior aprimoramento do Frontend)
 
 [Acessar >>](https://www.figma.com/design/nWdoJYqm70ZisZ8qdeG17V/EarTrainer?node-id=0-1&t=5aYB5z8hnFgClNc2-1)
 
-#### UML
+### UML
 
 ``` mermaidclassDiagram
     class EarTrainer {
