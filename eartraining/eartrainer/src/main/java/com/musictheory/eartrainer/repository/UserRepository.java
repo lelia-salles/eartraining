@@ -7,9 +7,10 @@ import com.musictheory.eartrainer.model.User;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    User findById(String Id);
+
+    User findById(String id);
 
     Optional<User>
-        findByEmail(String email);
+            findByEmail(String email);
 
-   }
+}
