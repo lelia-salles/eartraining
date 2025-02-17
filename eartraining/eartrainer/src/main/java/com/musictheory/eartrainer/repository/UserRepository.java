@@ -1,6 +1,6 @@
 package com.musictheory.eartrainer.repository;
 
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.musictheory.eartrainer.model.User;
 
