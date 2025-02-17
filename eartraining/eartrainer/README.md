@@ -14,7 +14,7 @@ O **EarTrainer** é uma API RESTful para treinar a percepção musical de interv
 
 
 
-## Principais Tecnologias Usadas \U0001F4BE
+## Principais Tecnologias Usadas :FLOPPY_DISK:
 ---
 
 ### Backend
