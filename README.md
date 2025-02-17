@@ -47,128 +47,95 @@ O **EarTrainer** é uma API RESTful para treinar a percepção musical de interv
 
 ### UML
 
-``` mermaid
-    class EarTrainer {
-        - User user
-        - Activity activity
-        - Level level
-        + selectLevel(Level level)
-        + selectActivity(Activity activity)
-        + startSession()
-    }
-
+```mermaid
+classDiagram
+    direction TB
+    
     class User {
-        - String name
-        - String email
-        - String profileImage
-        - List<SocialLink> socialLinks
-        + editProfile(String name, String email, String profileImage)
-        + addSocialLink(SocialLink link)
+        +Long id
+        +String name
+        +String email
+        +String password
+        +setName(String name)
+        +setEmail(String email)
     }
-
-    class SocialLink {
-        - String platform
-        - String url
-    }
-
-    class Activity {
-        - String type 
-        - List<Level> levels
-        + start()
-    }
-
-    class Level {
-        - String difficulty 
-        - List<Question> questions
-        + loadQuestions()
-    }
-
-    class Question {
-        - String soundClip
-        - String correctAnswer
-        + validateAnswer(String userAnswer)
-    }
-
-    class Authentication {
-        + login(String email, String password)
-        + loginWithGoogle()
-    }
-
-    class Subscription {
-        - boolean isSubscribed
-        + subscribe()
-        + unsubscribe()
-    }
-
-    class AudioProcessor {
-        + generateSound(String note)
-        + processAudio(byte[] audioData)
-    }
-
-    class MachineLearning {
-        + analyzePattern(byte[] audioData)
+    
+    class UserRegisterDTO {
+        +String name
+        +String email
+        +String password
     }
 
     class UserActivity {
-        - User user
-        - String selectedActivity
-        + saveActivity(User user, String activity)
+        +Long id
+        +User user
+        +String selectedActivity
     }
-
+    
     class UserLevel {
-        - User user
-        - String selectedLevel
-        + saveLevel(User user, String level)
+        +Long id
+        +User user
+        +String selectedLevel
+    }
+    
+    class UserRepository {
+        +Optional<User> findByEmail(String email)
     }
 
-    class ActivitySelectorController {
-        + selectActivity(String activity)
+    class ActivitySelectorRepository {
+        +save(UserActivity activity)
     }
 
-    class LevelSelectorController {
-        + selectLevel(String level)
+    class LevelSelectorRepository {
+        +save(UserLevel level)
     }
 
-    class TrainerController {
-        + getExercise(Long userId, String level, String type)
-        + validateAnswer(Long userId, String level, String answer, String type)
+    class UserRegisterService {
+        +User registerUser(UserRegisterDTO userDTO)
+    }
+    
+    class UserService {
+        +Optional<User> getUserByEmail(String email)
+        +User updateUserProfile(Long userId, String newName, String newEmail)
     }
 
     class MLTrainerService {
-        + getExerciseForLevel(String level, String type)
+        +String getExerciseForLevel(String level, String type)
+    }
+
+    class AudioService {
+        +byte[] generateSound(String note)
+        +void playSound(byte[] audioData)
     }
 
     class TrainerService {
-        + getExercise(Long userId, String level, String type)
-        + validateAnswer(Long userId, String level, String answer, String type)
+        +String getExercise(Long userId, String level, String type)
+        +String validateAnswer(Long userId, String level, String answer, String type)
     }
 
-    class IntervalGeneratorService {
-        + generateIntervalForLevel(String level)
+    class ActivitySelectorService {
+        +UserActivity saveUserActivity(User user, String activity)
     }
 
-    class ChordGeneratorService {
-        + generateChordForLevel(String level)
+    class LevelSelectorService {
+        +UserLevel saveUserLevel(User user, String level)
     }
 
-    EarTrainer --> User
-    EarTrainer --> Activity
-    EarTrainer --> Level
-    User --> SocialLink
-    Activity --> Level
-    Level --> Question
-    EarTrainer --> AudioProcessor
-    EarTrainer --> MachineLearning
-    AudioProcessor --> "TarsosDSP & JavaSoundAPI"
-    MachineLearning --> "TensorFlow Java"
+    class TrainerController {
+        +ResponseEntity<String> getExercise(Long userId, String level, String type)
+        +ResponseEntity<String> validateAnswer(Long userId, String level, String answer, String type)
+    }
+
+    UserRegisterDTO --> UserRegisterService
+    UserRegisterService --> UserRepository
     User --> UserActivity
-    UserActivity --> ActivitySelectorController
     User --> UserLevel
-    UserLevel --> LevelSelectorController
-    ActivitySelectorController --> TrainerController
-    LevelSelectorController --> TrainerController
-    TrainerController --> TrainerService
-    TrainerService --> MLTrainerService
-    TrainerService --> IntervalGeneratorService
-    TrainerService --> ChordGeneratorService
+    UserActivity --> ActivitySelectorRepository
+    UserLevel --> LevelSelectorRepository
+    ActivitySelectorService --> ActivitySelectorRepository
+    LevelSelectorService --> LevelSelectorRepository
+    MLTrainerService --> TrainerService
+    AudioService --> TrainerService
+    TrainerService --> TrainerController
+    TrainerController --> User
 ```
