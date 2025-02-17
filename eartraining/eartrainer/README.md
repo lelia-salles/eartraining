@@ -9,7 +9,7 @@ O **EarTrainer** é uma API RESTful para treinar a percepção musical de interv
 - **Autenticação e perfil:** Login via email/senha ou Google OAuth, com um perfil personalizável.
 - **Perfil do Usuário: O usuário pode adicionar e editar suas informações e suas redes sociais para compartilhar seu progresso.
 - **Processamento e Geração de Áudio:** Sons gerados dinamicamente e as respostas do usuário são validadas automáticamente após 5 tentativas.
-- **Arquitetura escalável e banco de dados otimizado para testes e produção, e com comunicação em tempo real
+- **Arquitetura** escalável e **banco de dados** otimizado para testes e produção, e com comunicação em tempo real
 
 
 
