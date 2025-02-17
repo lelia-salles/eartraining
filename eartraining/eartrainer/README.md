@@ -17,15 +17,15 @@ O **EarTrainer** é uma API RESTful para treinar a percepção musical de interv
 
 #### Backend
 
--Java 21
--Spring Boot 3.x
--Spring Security & OAuth2
--Spring WebSockets
--Spring Data JPA (PostgreSQL ou H2)
--TarsosDSP (Processamento de áudio)
--Java Sound API (Geração de som)
--TensorFlow Java (IA e Machine Learning)
--Gradle (Gerenciamento de dependências)
+- Java 21
+- Spring Boot 3.x
+- Spring Security & OAuth2
+- Spring WebSockets
+- Spring Data JPA (PostgreSQL ou H2)
+- TarsosDSP (Processamento de áudio)
+-J ava Sound API (Geração de som)
+- TensorFlow Java (IA e Machine Learning)
+- Gradle (Gerenciamento de dependências)
 
 #### Infraestrutura e otimização
 
@@ -34,12 +34,12 @@ O **EarTrainer** é uma API RESTful para treinar a percepção musical de interv
 
 #### Frontend
 
--Thymeleaf (Templates para teste no backend)
+- Thymeleaf (Templates para teste no backend)
 
 
 #### UX/UI 
 
--Figma (para posterior aprimoramento do Frontend)
+- Figma (para posterior aprimoramento do Frontend)
 
 [Acessar >>](https://www.figma.com/design/nWdoJYqm70ZisZ8qdeG17V/EarTrainer?node-id=0-1&t=5aYB5z8hnFgClNc2-1)
 
