@@ -17,18 +17,14 @@ Redes sociais: O usuário pode adicionar e editar suas redes sociais dentro do p
 
 ## UML
 
-``` mermaid
-classDiagram
+``` mermaidclassDiagram
     class EarTrainer {
         - User user
         - Activity activity
         - Level level
-        - Model model  
         + selectLevel(Level level)
         + selectActivity(Activity activity)
         + startSession()
-        + generateIntervalOrChord(Level level)  
-        + provideFeedback(userAnswer)  
     }
 
     class User {
@@ -36,10 +32,8 @@ classDiagram
         - String email
         - String profileImage
         - List<SocialLink> socialLinks
-        - int score  
         + editProfile(String name, String email, String profileImage)
         + addSocialLink(SocialLink link)
-        + updateScore(int points)  
     }
 
     class SocialLink {
@@ -48,22 +42,20 @@ classDiagram
     }
 
     class Activity {
-        - String type 
+        - String type // e.g., Chords, Intervals
         - List<Level> levels
         + start()
     }
 
     class Level {
-        - String difficulty 
+        - String difficulty // Beginner, Intermediate, Advanced
         - List<Question> questions
         + loadQuestions()
-        + adjustDifficulty(int score)  
     }
 
     class Question {
         - String soundClip
         - String correctAnswer
-        - String userAnswer
         + validateAnswer(String userAnswer)
     }
 
@@ -78,20 +70,75 @@ classDiagram
         + unsubscribe()
     }
 
-    class Model {
-        - String modelPath 
-        + loadModel()  
-        + generateIntervalOrChord(Level level)  
-        + evaluateAnswer(String userAnswer, String correctAnswer)  
+    class AudioProcessor {
+        + generateSound(String note)
+        + processAudio(byte[] audioData)
+    }
+
+    class MachineLearning {
+        + analyzePattern(byte[] audioData)
+    }
+
+    class UserActivity {
+        - User user
+        - String selectedActivity
+        + saveActivity(User user, String activity)
+    }
+
+    class UserLevel {
+        - User user
+        - String selectedLevel
+        + saveLevel(User user, String level)
+    }
+
+    class ActivitySelectorController {
+        + selectActivity(String activity)
+    }
+
+    class LevelSelectorController {
+        + selectLevel(String level)
+    }
+
+    class TrainerController {
+        + getExercise(Long userId, String level, String type)
+        + validateAnswer(Long userId, String level, String answer, String type)
+    }
+
+    class MLTrainerService {
+        + getExerciseForLevel(String level, String type)
+    }
+
+    class TrainerService {
+        + getExercise(Long userId, String level, String type)
+        + validateAnswer(Long userId, String level, String answer, String type)
+    }
+
+    class IntervalGeneratorService {
+        + generateIntervalForLevel(String level)
+    }
+
+    class ChordGeneratorService {
+        + generateChordForLevel(String level)
     }
 
     EarTrainer --> User
     EarTrainer --> Activity
     EarTrainer --> Level
-    EarTrainer --> Model  
     User --> SocialLink
     Activity --> Level
     Level --> Question
-    Level --> Model  
-    Question --> Model  
+    EarTrainer --> AudioProcessor
+    EarTrainer --> MachineLearning
+    AudioProcessor --> "TarsosDSP & JavaSoundAPI"
+    MachineLearning --> "TensorFlow Java"
+    User --> UserActivity
+    UserActivity --> ActivitySelectorController
+    User --> UserLevel
+    UserLevel --> LevelSelectorController
+    ActivitySelectorController --> TrainerController
+    LevelSelectorController --> TrainerController
+    TrainerController --> TrainerService
+    TrainerService --> MLTrainerService
+    TrainerService --> IntervalGeneratorService
+    TrainerService --> ChordGeneratorService
 ```
