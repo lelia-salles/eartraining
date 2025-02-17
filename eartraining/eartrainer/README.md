@@ -44,7 +44,7 @@ O **EarTrainer** é uma API RESTful para treinar a percepção musical de interv
 
 [Acessar >>](https://www.figma.com/design/nWdoJYqm70ZisZ8qdeG17V/EarTrainer?node-id=0-1&t=5aYB5z8hnFgClNc2-1)
 
-### UML
+#### UML
 
 ``` mermaidclassDiagram
     class EarTrainer {
