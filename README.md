@@ -47,7 +47,7 @@ O **EarTrainer** é uma API RESTful para treinar a percepção musical de interv
 
 ### UML
 
-``` mermaidclassDiagram
+``` mermaid
     class EarTrainer {
         - User user
         - Activity activity
