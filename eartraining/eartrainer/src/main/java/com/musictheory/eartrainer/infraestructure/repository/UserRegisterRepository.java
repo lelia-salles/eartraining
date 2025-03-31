@@ -1,12 +1,10 @@
-package com.musictheory.eartrainer.repository;
+package com.musictheory.infraestructure.eartrainer.repository;
 
-public interface UserRegisterRepository e
+import com.musictheory.eartrainer.model.UserRegister;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-    xtends JpaRepository
-
-    <UserRegister, Long>
-               Optional<UserRegister>
-        findByEmail(String email);
-
-            
+@Repository
+public interface UserRegisterRepository extends JpaRepository<UserRegister, Long> {
+}
 
