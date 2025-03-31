@@ -1,4 +1,4 @@
-package com.musictheory.eartrainer.application.model;
+package com.musictheory.eartrainer.domain.model;
 
 import com.musictheory.eartrainer.dto.UserDTO;
 import com.musictheory.eartrainer.dto.UserRegisterDTO;
