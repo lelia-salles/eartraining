@@ -1,4 +1,4 @@
-package com.musictheory.eartrainer.dto;
+package com.musictheory.eartrainer.domain.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
