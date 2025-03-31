@@ -1,6 +1,6 @@
 package com.musictheory.eartrainer.application.model;
 
-mport com.musictheory.eartrainer.dto.UserDTO;
+import com.musictheory.eartrainer.dto.UserDTO;
 import com.musictheory.eartrainer.dto.UserRegisterDTO;
 import com.musictheory.eartrainer.model.User;
 import com.musictheory.eartrainer.repository.UserRepository;

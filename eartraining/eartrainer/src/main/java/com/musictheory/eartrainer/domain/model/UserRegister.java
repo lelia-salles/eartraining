@@ -1,34 +1,33 @@
-package com.musictheory.eartrainer.application.model;
-  
+package com.musictheory.eartrainer.domain.model;
 
-import com.musicista.eartrainer.dto.UserRegisterDTO;
-import com.musicista.eartrainer.model.User;
-import com.musicista.eartrainer.repository.UserRepository;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Service
-public class UserRegisterService {
-    
-    private final UserRepository userRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
+@Entity
+@Table(name = "user_registers")
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserRegister {
 
-    public UserRegisterService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = new BCryptPasswordEncoder();
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public User registerUser(UserRegisterDTO userDTO) {
-        if (userRepository.findByEmail(userDTO.getEmail()).isPresent()) {
-            throw new IllegalArgumentException("E-mail já cadastrado.");
-        }
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-        
-        String encryptedPassword = passwordEncoder.encode(userDTO.getPassword());
+    @Column(nullable = false)
+    private String registrationDate;
 
-        User user = new User(userDTO.getName(), userDTO.getEmail(), encryptedPassword);
-        return userRepository.save(user);
+    @Column(nullable = false, length = 20)
+    private String status;  
+
+    public UserRegister(User user, String registrationDate, String status) {
+        this.user = user;
+        this.registrationDate = registrationDate;
+        this.status = status;
     }
 }
 
-}
