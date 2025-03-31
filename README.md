@@ -2,13 +2,17 @@
 ---
 ---
 
+<p align="center">
+<img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=%2UNDER DEVELOPMENT&color=GREEN&style=for-the-badge"/>
+</p>
+
 [Portuguese Translation](https://github.com/lelia-salles/eartrainer/blob/main/eartraining/eartrainer/README.md)
 
 ## Overview 👀
 ---
 EarTrainer is a RESTful API designed to train musical perception of intervals and chords through interactive activities and progressive levels. It leverages AI and Machine Learning to ensure personalized and progressive learning.
 
-```Developed as the final project for the **GFT Developing in Java with AI** course by DIO.```
+```Developed as the final project for the **GFT Developing in Java with AI GFT** course by DIO.```
 
 ## Key Features 🔆
 ---
