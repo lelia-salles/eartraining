@@ -1,0 +1,1 @@
+package com.musictheory.eartrainer.domain.model;

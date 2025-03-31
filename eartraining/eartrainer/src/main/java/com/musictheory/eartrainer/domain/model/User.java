@@ -1,4 +1,4 @@
-package com.musictheory.eartrainer.model;
+package com.musictheory.eartrainer.domain.model;
 import jakarta.persistence.*;
 
 @Entity
