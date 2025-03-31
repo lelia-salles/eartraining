@@ -1,5 +1,4 @@
-public class UserRegisterService {
-
+package com.musictheory.eartrainer.application.model;
   
 
 import com.musicista.eartrainer.dto.UserRegisterDTO;
