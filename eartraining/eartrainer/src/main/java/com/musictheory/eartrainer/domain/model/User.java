@@ -1,59 +1,34 @@
-package com.musictheory.eartrainer.domain.model;
-import jakarta.persistence.*;
+import com.musictheory.eartrainer.dto.UserDTO;
+import com.musictheory.eartrainer.dto.UserRegisterDTO;
+import com.musictheory.eartrainer.model.User;
+import com.musictheory.eartrainer.repository.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
-@Entity
-@Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Long id;
+@Service
+public class UserService {
 
-    @Column(nullable = false, length = 50)
-    private String name;
-
-    @Column(nullable = false, unique = true, length = 100)
-    private String email;
-
-    @Column(nullable = false)
-    private String password;
-
-    public User(){}
-
-    public User(String name, String email, String password){
-        this.name = name;
-        this.email = email;
-        this.password = password;
+    private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
+    
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder();
     }
-    public Long getId() {
-        return id;
-    }
+    
+    public User registerUser(UserRegisterDTO userDTO){
+        if (userRepository.findByEmail((userDTO.getEmail()).isPresent()){
+            throw new IllegalArgumentException("This email already exists");
+        }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+        
+        String encryptedPassword = passwordEncoder.encode(userDTO.getPassword());
+            User user = new User();
+                return userRepository.save(user);
+        
+        }
+    public UserDTO getUserByEmail(String email) {
+        User user = userRepository.findByEmail(email);
+        return new UserDTO(user.getName(), user.getEmail());    
     }
 }

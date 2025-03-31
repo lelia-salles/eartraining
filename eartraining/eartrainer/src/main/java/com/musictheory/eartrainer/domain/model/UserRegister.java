@@ -1,41 +1,35 @@
-package com.musictheory.eartrainer.domain.model;
+public class UserRegisterService {
 
-import jakarta.persistence.*;
-import lombok.*;
-import com.musictheory.eartrainer.util.PasswordEncoderUtil;
+  
 
-@Entity
-@Table(name = "users")
-@Getter @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(of = {"id", "email"})
-@ToString(exclude = "password")
-public class UserRegister {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+import com.musicista.eartrainer.dto.UserRegisterDTO;
+import com.musicista.eartrainer.model.User;
+import com.musicista.eartrainer.repository.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
-    @Column(nullable = false, length = 50)
-    private String name;
+@Service
+public class UserRegisterService {
+    
+    private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-    @Column(nullable = false, unique = true, length = 100)
-    private String email;
-
-    @Column(nullable = false)
-    private String password;
-
-    public User(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.setPassword(password);
+    public UserRegisterService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
-    public void setPassword(String password) {
-        this.password = PasswordEncoderUtil.encode(password);
-    }
+    public User registerUser(UserRegisterDTO userDTO) {
+        if (userRepository.findByEmail(userDTO.getEmail()).isPresent()) {
+            throw new IllegalArgumentException("E-mail já cadastrado.");
+        }
 
-    public String getMaskedPassword() {
-        return "********";
+        
+        String encryptedPassword = passwordEncoder.encode(userDTO.getPassword());
+
+        User user = new User(userDTO.getName(), userDTO.getEmail(), encryptedPassword);
+        return userRepository.save(user);
     }
+}
+
 }
