@@ -44,7 +44,7 @@ public class EarTrainer {
         activity.start(); // Inicia a atividade
     }
 
-    // Getters and Setters
+    
     public Long getId() {
         return id;
     }

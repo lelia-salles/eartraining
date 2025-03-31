@@ -25,11 +25,11 @@ public class Activity {
     }
 
     public void start() {
-        // Iniciar a atividade (ex: gerar os exercícios, mostrar o conteúdo)
+        
         System.out.println("Activity started: " + type);
     }
 
-    // Getters and Setters
+    
     public Long getId() {
         return id;
     }

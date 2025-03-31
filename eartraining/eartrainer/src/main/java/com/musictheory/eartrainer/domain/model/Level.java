@@ -25,11 +25,11 @@ public class Level {
     }
 
     public void loadQuestions() {
-        // Carregar as questões específicas para este nível
+        
         System.out.println("Loading questions for level: " + difficulty);
     }
 
-    // Getters and Setters
+    
     public Long getId() {
         return id;
     }

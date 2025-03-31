@@ -22,7 +22,7 @@ public class SocialLink {
         this.url = url;
     }
 
-    // Getters and Setters
+    
     public Long getId() {
         return id;
     }

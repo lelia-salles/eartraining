@@ -26,7 +26,6 @@ public class Question {
         return userAnswer.equalsIgnoreCase(correctAnswer) ? "Correct" : "Incorrect";
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

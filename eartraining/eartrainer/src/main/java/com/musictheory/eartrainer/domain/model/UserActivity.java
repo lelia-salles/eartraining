@@ -28,7 +28,7 @@ public class UserActivity {
         this.selectedActivity = activity;
     }
 
-    // Getters and Setters
+    
     public Long getId() {
         return id;
     }
