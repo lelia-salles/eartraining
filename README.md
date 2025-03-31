@@ -3,7 +3,7 @@
 ---
 
 <p align="center">
-<img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=UNDER DEVELOPMENT&color=GREEN&style=for-the-badge"/>
+<img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=UNDER_DEVELOPMENT&color=GREEN&style=for-the-badge"/>
 </p>
 
 [Portuguese Translation](https://github.com/lelia-salles/eartrainer/blob/main/eartraining/eartrainer/README.md)
